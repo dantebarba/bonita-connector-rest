@@ -97,6 +97,7 @@ public class RESTConnector extends AbstractRESTConnectorImpl {
     private static final String HTTP_PROTOCOL = "HTTP";
     private static final int HTTP_PROTOCOL_VERSION_MAJOR = 1;
     private static final int HTTP_PROTOCOL_VERSION_MINOR = 1;
+    private static final boolean HTTP_STATUS_CODE_FAIL = false;
 
     /**
      * The class logger
@@ -511,7 +512,7 @@ public class RESTConnector extends AbstractRESTConnectorImpl {
             LOGGER.fine("Response recieved.");
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             final String re = httpResponse.getStatusLine().getReasonPhrase();
-            if (!statusSuccessful(statusCode)) {
+            if (!statusSuccessful(statusCode) && HTTP_STATUS_CODE_FAIL) {
                 throw new ConnectorException(
                         String.format("%s response status is not successful: %s - %s", request, statusCode, httpResponse.getStatusLine().getReasonPhrase()));
             }
