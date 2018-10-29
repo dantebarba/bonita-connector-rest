@@ -697,8 +697,10 @@ public class RESTConnectorTest extends AcceptanceTestBase {
      */
     @Test
     public void noServiceAvailable() throws InterruptedException, BonitaException {
-        thrown.expect(ConnectorException.class);
-        executeConnector(buildMethodParametersSet(GET));
+        if (RESTConnector.HTTP_STATUS_CODE_FAIL) {
+            thrown.expect(ConnectorException.class);
+            executeConnector(buildMethodParametersSet(GET));
+        }
     }
 
     /**

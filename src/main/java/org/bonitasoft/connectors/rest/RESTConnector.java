@@ -97,7 +97,7 @@ public class RESTConnector extends AbstractRESTConnectorImpl {
     private static final String HTTP_PROTOCOL = "HTTP";
     private static final int HTTP_PROTOCOL_VERSION_MAJOR = 1;
     private static final int HTTP_PROTOCOL_VERSION_MINOR = 1;
-    private static final boolean HTTP_STATUS_CODE_FAIL = false;
+    public static final boolean HTTP_STATUS_CODE_FAIL = false;
 
     /**
      * The class logger
